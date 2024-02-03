@@ -174,20 +174,20 @@ const SecondDocument = ({ csvData }) => {
         csvData.length > 0 &&
         csvData.map((data, index) => {
           const maxiCodeImage = generateMaxiCodeImage(
-            `01 96${
-              data && data[14]?.padEnd(9, "0")
-            } 840 002 1Z10838454 UPSN 40612Y 015 1/1 ${data[16]} N ${
+            `[)> 01 96${
+              data && data[14]?.replace("-", "").padEnd(9, "0")
+            } 840 002 ${data[23].slice(0, 2)}${data[23].slice(data[23].length - 8, data[23].length)} UPSN ${data[23].slice(2, 8)} 015 1/1 ${data[16]} N ${
               data[10]
             } ${data[13]}`
           );
-          console.log(
-            `01 96${data[14]?.padEnd(
-              9,
-              "0"
-            )} 840 002 1Z10838454 UPSN 40612Y 015 1/1 ${data && data[16]} N ${
-              data[10]
-            } ${data[13]}`
-          );
+          // console.log(
+          //   `01 96${data[14]?.padEnd(
+          //     9,
+          //     "0"
+          //   )} 840 002 1Z10838454 UPSN 40612Y 015 1/1 ${data && data[16]} N ${
+          //     data[10]
+          //   } ${data[13]}`
+          // );
           if (
             !data[0] ||
             !data[2] ||
@@ -223,7 +223,8 @@ const SecondDocument = ({ csvData }) => {
           };
           const trackingId = generateUpsTrackingNumber();
           // let canvas, canvas2;
-          const zipCode = data[14];
+          const zipCode1 = data[14];
+          const zipCode = zipCode1.replace("-", "")
           const barcodeValue = `420${
             zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)
           }`;
@@ -296,7 +297,7 @@ const SecondDocument = ({ csvData }) => {
                       <View></View>
                     </View>
 
-                    <View style={{ padding: 0, marginTop: 16, paddingLeft: 2 }}>
+                    <View style={{ padding: 0, marginTop: 10, paddingLeft: 2 }}>
                       <Text style={styles.normalTwo}>SHIP TO:</Text>
                       <View
                         style={{
@@ -416,7 +417,7 @@ const SecondDocument = ({ csvData }) => {
                           style={{
                             fontSize: "10px",
                             paddingHorizontal: 2,
-                            paddingTop: 3,
+                            paddingTop: 2,
                             paddingBottom: 1,
                             // marginVertical: 1,
                           }}
@@ -448,7 +449,7 @@ const SecondDocument = ({ csvData }) => {
                       style={{
                         flexDirection: "row",
                         justifyContent: "center",
-                        height: 90,
+                        height: 80,
                         width: 220,
                         marginHorizontal: "auto",
                         paddingVertical: 6,
@@ -464,7 +465,26 @@ const SecondDocument = ({ csvData }) => {
                       }}
                     ></View>
                     <View style={{ padding: 1 }}>
-                      <Text style={{ fontSize: "8px" }}>BILLING: P/P</Text>
+                    <Text style={{ fontSize: "8px" }}>BILLING: P/P</Text>
+                      <Text style={{ fontSize: "8px" }}>DESC: {data[20]}</Text>
+                      <Text
+                        style={{
+                          marginTop: 8,
+                          fontWeight: "medium",
+                          fontSize: "8px",
+                        }}
+                      >
+                        REF #1: {data[21]}
+                      </Text>
+                      <Text
+                        style={{
+                          marginTop: 1,
+                          fontWeight: "medium",
+                          fontSize: "8px",
+                        }}
+                      >
+                        {`REF #2: ${data[22]}`}
+                      </Text>
                     </View>
                     <View
                       style={{
@@ -472,7 +492,7 @@ const SecondDocument = ({ csvData }) => {
                         flexDirection: "flex-end",
                         justifyContent: "flex-end",
                         alignItems: "flex-end",
-                        marginTop: 36.2,
+                        marginTop: 16.8,
                         padding: 0.1,
                       }}
                     >

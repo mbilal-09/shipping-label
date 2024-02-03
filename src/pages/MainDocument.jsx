@@ -5,7 +5,7 @@ import MyDocument from "./MyDocument";
 import SecondDocument from "./SecondDocument";
 import ThirdDocument from "./ThirdDocument";
 
-const MainDocument = ({ csvData, selectedOption }) => (
+const MainDocument = ({ csvData, cvsFileName, selectedOption }) => (
   <div>
     {selectedOption === "UPS 2ND DAY AIR" ? (
       <PDFViewer style={{ width: "100%", height: 1200, margin: "auto" }}>
@@ -30,7 +30,7 @@ const MainDocument = ({ csvData, selectedOption }) => (
           <SecondDocument csvData={csvData} />
         )
       }
-      fileName="your-document.pdf"
+      fileName={`${cvsFileName}.pdf`}
     >
       {({ blob, url, loading, error }) =>
         loading ? "Loading document..." : "Download PDF"

@@ -30,6 +30,7 @@ function Dashboard() {
   const getTargetElement = () => document.getElementById("content-id");
   const [allPdfData, setAllPdfData] = useState([]);
   const [selectedOption, setSelectedOption] = useState("");
+  const [cvsFileName, setCvsFileName] = useState("");
 
   const handleLogout = async () => {
     try {
@@ -89,6 +90,8 @@ function Dashboard() {
             onFileLoaded={(data, fileInfo, originalFile) => {
               data.shift();
               setCsvData(data);
+              let name = fileInfo.name.replace('.csv', '')
+              setCvsFileName(name)
               console.log(data);
             }}
           />
@@ -122,7 +125,7 @@ function Dashboard() {
         </div>
       </div>
       {selectedOption && (
-        <MainDocument csvData={csvData} selectedOption={selectedOption} />
+        <MainDocument csvData={csvData} cvsFileName={cvsFileName} selectedOption={selectedOption} />
       )}
     </CheckAuth>
   );
