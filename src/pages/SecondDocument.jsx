@@ -20,15 +20,15 @@ Font.register({
   family: "Poppins",
   fonts: [
     {
-      src: "../../public/Poppins/Poppins-SemiBold.ttf",
+      src: "/Poppins/Poppins-SemiBold.ttf",
       fontWeight: 600,
     },
     {
-      src: "../../public/Poppins/Poppins-Bold.ttf",
+      src: "/Poppins/Poppins-Bold.ttf",
       fontWeight: 700,
     },
     {
-      src: "../../public/Poppins/Poppins-ExtraBold.ttf",
+      src: "/Poppins/Poppins-ExtraBold.ttf",
       fontWeight: 900,
     },
   ],
