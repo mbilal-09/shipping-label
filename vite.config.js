@@ -8,7 +8,7 @@ export default defineConfig({
     chunkSizeWarningLimit: 5000,
     rollupOptions: {
       // Example: externalize specific modules
-      external: ['/src/pages/dashboard.jsx', 'fs'],
+      external: ['/src/pages/dashboard.jsx'],
     },
   },
 })
