@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./pages/Login";
-import Dashboard from "./pages/dashboard";
+import Login from "/src/pages/Login.jsx";
+import Dashboard from "/src/pages/dashboard.jsx";
 
 function App() {
   return (
