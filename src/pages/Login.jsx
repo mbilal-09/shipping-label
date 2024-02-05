@@ -1,45 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import firebase from "../config/firebase";
-import {
-  getAuth,
-  onAuthStateChanged,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import CheckAuth from "../Components/AuthCheck";
 
 export default function Login() {
-  // const auth = getAuth();
   const navigate = useNavigate();
   const auth = getAuth();
-  const [user, setUser] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
 
   const submitHandle = async (e) => {
     e.preventDefault();
-    // setLoading(true);
-    await firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        // setSuccess(true);
-        // setLoading(false);
-        navigate("/dashboard");
-        // ...
-      })
-      .catch((error) => {
-        console.log(error, "error");
-        navigate("/");
-        // ..
-      });
-    // setLoading(false);
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      navigate("/dashboard");
+    } catch (error) {
+      console.error(error, "error");
+      navigate("/");
+    }
   };
 
   return (

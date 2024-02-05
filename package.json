@@ -11,26 +11,16 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^3.3.4",
-    "axios": "^1.6.6",
     "bwip-js": "^4.2.0",
-    "easy-pdf-merge": "^0.2.6",
-    "file-saver": "^2.0.5",
     "firebase": "^10.7.2",
     "flowbite": "^2.2.1",
     "flowbite-react": "^0.7.2",
-    "html2pdf.js": "^0.10.1",
-    "jszip": "^3.10.1",
-    "pdf-merge": "^1.2.0",
-    "random-string-alphanumeric-generator": "^0.12.2",
     "react": "^18.2.0",
-    "react-barcode": "^1.4.6",
     "react-csv-reader": "^4.0.0",
     "react-dom": "^18.2.0",
     "react-jsbarcode": "^0.4.2",
-    "react-qrcode": "^0.3.6",
     "react-router-dom": "^6.21.3",
-    "react-to-pdf": "^1.0.1",
-    "read-excel-file": "^5.7.1"
+    "react-to-pdf": "^1.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

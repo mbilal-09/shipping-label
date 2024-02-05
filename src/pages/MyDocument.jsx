@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   PDFDownloadLink,
   Page,
@@ -7,43 +7,22 @@ import {
   Document,
   StyleSheet,
   Image,
-  Canvas,
   Font,
 } from "@react-pdf/renderer";
-import { randomAlphanumeric } from "random-string-alphanumeric-generator";
 import bwipjs from "bwip-js";
-
-// import { Barcode } from "@react-pdf/barcode";
-import Barcode from "react-barcode";
-// import Barcode from "react-jsbarcode";
 
 Font.register({
   family: "Poppins",
   fonts: [
-    {
-      src: "/Poppins/Poppins-SemiBold.ttf",
-      fontWeight: 600,
-    },
-    {
-      src: "/Poppins/Poppins-Bold.ttf",
-      fontWeight: 700,
-    },
-    {
-      src: "/Poppins/Poppins-ExtraBold.ttf",
-      fontWeight: 900,
-    },
+    { src: "/Poppins/Poppins-SemiBold.ttf", fontWeight: 600 },
+    { src: "/Poppins/Poppins-Bold.ttf", fontWeight: 700 },
+    { src: "/Poppins/Poppins-ExtraBold.ttf", fontWeight: 900 },
   ],
 });
 
 const styles = StyleSheet.create({
-  semiBoldText: {
-    fontFamily: "Poppins",
-    fontWeight: 600,
-  },
-  boldText: {
-    fontWeight: 700,
-    fontFamily: "Poppins",
-  },
+  semiBoldText: { fontFamily: "Poppins", fontWeight: 600 },
+  boldText: { fontWeight: 700, fontFamily: "Poppins" },
   underShipTo: {
     fontWeight: 800,
     fontFamily: "Poppins",
@@ -59,10 +38,7 @@ const styles = StyleSheet.create({
     transform: "scaleY(2)",
     fontSize: 16,
   },
-  extraboldText: {
-    fontWeight: 900,
-    fontFamily: "Poppins",
-  },
+  extraboldText: { fontWeight: 900, fontFamily: "Poppins" },
   barUpperText: {
     fontWeight: 900,
     fontFamily: "Poppins",
@@ -72,16 +48,8 @@ const styles = StyleSheet.create({
     marginTop: 2,
     transform: "scaleY(2)",
   },
-  normal: {
-    fontFamily: "Poppins",
-    fontWeight: 600,
-    fontSize: 12,
-  },
-  normalTwo: {
-    fontFamily: "Poppins",
-    fontWeight: 600,
-    fontSize: 10,
-  },
+  normal: { fontFamily: "Poppins", fontWeight: 600, fontSize: 12 },
+  normalTwo: { fontFamily: "Poppins", fontWeight: 600, fontSize: 10 },
   second: {
     fontWeight: 600,
     fontSize: 36,
@@ -96,7 +64,6 @@ const MyDocument = ({ csvData }) => {
     const day = currentDate.getDate().toString().padStart(2, "0");
     const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
     const year = currentDate.getFullYear();
-
     return `${day},${month},${year}`;
   };
 
@@ -104,11 +71,8 @@ const MyDocument = ({ csvData }) => {
     const currentDate = new Date();
     const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
     const year = currentDate.getFullYear();
-
     return `${month}/${year}`;
   };
-
-  const canvasRef = React.useRef(null);
 
   const generateMaxiCodeImage = (barcodeValueTwo) => {
     const canvas = document.createElement("canvas");
@@ -127,6 +91,7 @@ const MyDocument = ({ csvData }) => {
       return null;
     }
   };
+
   const generateBarCodeImage = (barcodeValueThree) => {
     const canvas = document.createElement("canvas");
     try {
@@ -144,6 +109,7 @@ const MyDocument = ({ csvData }) => {
       return null;
     }
   };
+
   const generateBarCodeTwoImage = (barcodeValueFour) => {
     const canvas = document.createElement("canvas");
     try {
@@ -170,11 +136,14 @@ const MyDocument = ({ csvData }) => {
           const maxiCodeImage = generateMaxiCodeImage(
             `[)> 01 96${
               data && data[14]?.replace("-", "").padEnd(9, "0")
-            } 840 002 ${data[23].slice(0, 2)}${data[23].slice(data[23].length - 8, data[23].length)} UPSN ${data[23].slice(2, 8)} 015 1/1 ${data[16]} N ${
-              data[10]
-            } ${data[13]}`
+            } 840 002 ${data[23].slice(0, 2)}${data[23].slice(
+              data[23].length - 8,
+              data[23].length
+            )} UPSN ${data[23].slice(2, 8)} 015 1/1 ${data[16]} N ${data[10]} ${
+              data[13]
+            }`
           );
-        
+
           if (
             !data[0] ||
             !data[2] ||
@@ -198,19 +167,9 @@ const MyDocument = ({ csvData }) => {
           ) {
             return null;
           }
-          const generateUpsTrackingNumber = () => {
-            const randomSection = `${Math.floor(Math.random() * 10000)
-              .toString()
-              .padStart(4, "0")}`;
 
-            return `1Z 723 90Y 02 ${randomSection?.slice(
-              0,
-              4
-            )} ${randomSection?.slice(4)}`;
-          };
-          const trackingId = generateUpsTrackingNumber();
           const zipCode1 = data[14];
-          const zipCode = zipCode1.replace("-", "")
+          const zipCode = zipCode1.replace("-", "");
           const barcodeValue = `420${
             zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)
           }`;
@@ -219,7 +178,6 @@ const MyDocument = ({ csvData }) => {
           const randomTwoDigitNumber = Math.floor(Math.random() * 90) + 10;
 
           let inputValue = data[23];
-
           let formattedValue = [
             inputValue?.slice(0, 2),
             inputValue?.slice(2, 5),
@@ -281,7 +239,6 @@ const MyDocument = ({ csvData }) => {
                       </View>
                       <View></View>
                     </View>
-
                     <View style={{ padding: 0, marginTop: 12, paddingLeft: 2 }}>
                       <Text style={styles.normalTwo}>SHIP TO:</Text>
                       <View
@@ -361,19 +318,13 @@ const MyDocument = ({ csvData }) => {
                           position: "relative",
                         }}
                       >
-                        <Text style={styles.barUpperText}>
-                          {`${data[13]} ${
-                            data[14]?.slice(0, 3) || ""
-                          } 9-${randomTwoDigitNumber}`}
-                        </Text>
+                        <Text style={styles.barUpperText}>{`${data[13]} ${
+                          data[14]?.slice(0, 3) || ""
+                        } 9-${randomTwoDigitNumber}`}</Text>
                         {barcodeOne && (
                           <Image
                             src={barcodeOne}
-                            style={{
-                              width: 150,
-                              height: 45,
-                              marginLeft: 8,
-                            }}
+                            style={{ width: 150, height: 45, marginLeft: 8 }}
                           />
                         )}
                       </View>
@@ -400,10 +351,7 @@ const MyDocument = ({ csvData }) => {
                           UPS 2ND DAY AIR
                         </Text>
                         <Text
-                          style={{
-                            fontSize: "10px",
-                            paddingHorizontal: 2,
-                          }}
+                          style={{ fontSize: "10px", paddingHorizontal: 2 }}
                         >
                           TRACKING #: {formattedValue}
                         </Text>
@@ -427,7 +375,6 @@ const MyDocument = ({ csvData }) => {
                         width: 220,
                         marginHorizontal: "auto",
                         paddingVertical: 6,
-                        // paddingHorizontal: 2,
                       }}
                     >
                       {barcodeTwo && <Image src={barcodeTwo} />}
@@ -457,9 +404,7 @@ const MyDocument = ({ csvData }) => {
                           fontWeight: "medium",
                           fontSize: "8px",
                         }}
-                      >
-                        {`REF #2: ${data[22]}`}
-                      </Text>
+                      >{`REF #2: ${data[22]}`}</Text>
                     </View>
                     <View
                       style={{
@@ -477,9 +422,7 @@ const MyDocument = ({ csvData }) => {
                           textAlign: "right",
                           marginRight: 6,
                         }}
-                      >
-                        {`ISH 13.00F LASER 15.5V ${getCurrentMonth()}`}
-                      </Text>
+                      >{`ISH 13.00F LASER 15.5V ${getCurrentMonth()}`}</Text>
                     </View>
                   </View>
                 </View>
