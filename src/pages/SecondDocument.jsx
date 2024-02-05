@@ -143,10 +143,10 @@ const SecondDocument = ({ csvData }) => {
           const maxiCodeImage = generateMaxiCodeImage(
             `[)> 01 96${
               data && data[14]?.replace("-", "").padEnd(9, "0")
-            } 840 003 ${data[23].slice(0, 2)}${data[23].slice(
+            } 840 003 ${data[23]?.slice(0, 2)}${data[23]?.slice(
               data[23].length - 8,
               data[23].length
-            )} UPSN ${data[23].slice(2, 8)} 015 1/1 ${data[16]} N ${data[10]} ${
+            )} UPSN ${data[23]?.slice(2, 8)} 015 1/1 ${data[16]} N ${data[10]} ${
               data[13]
             }`
           );
