@@ -16,7 +16,7 @@ const CheckAuth = ({ children }) => {
       if (!user) {
         navigate("/");
       } else {
-        navigate("/dashboard");
+        navigate("/Dashboard");
       }
     });
     return () => unsubscribe();

@@ -20,7 +20,7 @@ export default function Login() {
         password
       );
       const user = userCredential.user;
-      navigate("/dashboard");
+      navigate("/Dashboard");
     } catch (error) {
       console.error(error, "error");
       navigate("/");
