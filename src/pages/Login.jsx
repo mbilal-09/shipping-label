@@ -28,20 +28,14 @@ export default function Login() {
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         // Signed in
-        console.log(userCredential, "users");
         const user = userCredential.user;
         // setSuccess(true);
         // setLoading(false);
-        navigate("/Dashboard");
+        navigate("/dashboard");
         // ...
       })
       .catch((error) => {
-        console.error(error); // Log the error to the console
-        // setLoading(false);
         console.log(error, "error");
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // setSuccess(false);
         navigate("/");
         // ..
       });

@@ -170,18 +170,10 @@ const ThirdDocument = ({ csvData }) => {
           const maxiCodeImage = generateMaxiCodeImage(
             `[)> 01 96${
               data && data[14]?.replace("-", "").padEnd(9, "0")
-            } 840 002 ${data[23].slice(0, 2)}${data[23].slice(data[23].length - 8, data[23].length)} UPSN ${data[23].slice(2, 8)} 015 1/1 ${data[16]} N ${
+            } 840 001 ${data[23].slice(0, 2)}${data[23].slice(data[23].length - 8, data[23].length)} UPSN ${data[23].slice(2, 8)} 015 1/1 ${data[16]} N ${
               data[10]
             } ${data[13]}`
           );
-          // console.log(
-          //   `01 96${data[14]?.padEnd(
-          //     9,
-          //     "0"
-          //   )} 840 002 1Z10838454 UPSN 40612Y 015 1/1 ${data && data[16]} N ${
-          //     data[10]
-          //   } ${data[13]}`
-          // );
           if (
             !data[0] ||
             !data[2] ||
@@ -216,13 +208,11 @@ const ThirdDocument = ({ csvData }) => {
             )} ${randomSection?.slice(4)}`;
           };
           const trackingId = generateUpsTrackingNumber();
-          console.log(trackingId, "trackingId");
           const zipCode1 = data[14];
           const zipCode = zipCode1.replace("-", "")
           const barcodeValue = `420${
             zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)
           }`;
-          console.log("barcodeValue One", barcodeValue, "barcodeValue One");
           const barcodeOne = generateBarCodeImage(barcodeValue);
           const barcodeTwo = generateBarCodeTwoImage(data[23] && data[23]);
           const randomTwoDigitNumber = Math.floor(Math.random() * 90) + 10;

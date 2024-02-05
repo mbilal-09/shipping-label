@@ -44,10 +44,6 @@ function Dashboard() {
 
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
-    console.log(
-      event.target.value,
-      "selectedOptionselectedOptionselectedOption"
-    );
   };
   const csvReaderRef = useRef(null);
   const handleLabelClick = () => {
@@ -92,7 +88,6 @@ function Dashboard() {
               setCsvData(data);
               let name = fileInfo.name.replace('.csv', '')
               setCvsFileName(name)
-              console.log(data);
             }}
           />
         </label>
