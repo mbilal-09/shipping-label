@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   PDFDownloadLink,
   Page,
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     fontSize: "8px",
     marginTop: 1.5,
     transform: "scaleY(2)",
+    textTransform: 'uppercase'
   },
   StretchBoldText: {
     fontWeight: 700,
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins",
     transform: "scaleY(2)",
     fontSize: 12,
+    textTransform: 'uppercase'
   },
 });
 
@@ -232,7 +234,7 @@ const SecondDocument = ({ csvData }) => {
                         padding: 2,
                       }}
                     >
-                      <View style={{ fontSize: "8px" }}>
+                      <View style={{ fontSize: "8px", textTransform: 'uppercase' }}>
                         <Text>{data[0]}</Text>
                         <Text>{data[7]}</Text>
                         <Text>{data[2]}</Text>
@@ -281,6 +283,7 @@ const SecondDocument = ({ csvData }) => {
                             display: "block",
                             marginBottom: -1,
                             margin: 0,
+                            textTransform: 'uppercase'
                           }}
                         >
                           {data[8]}
@@ -290,6 +293,7 @@ const SecondDocument = ({ csvData }) => {
                             display: "block",
                             marginBottom: -1,
                             margin: 0,
+                            textTransform: 'uppercase'
                           }}
                         >
                           {data[15]}
@@ -299,6 +303,7 @@ const SecondDocument = ({ csvData }) => {
                             display: "block",
                             marginBottom: -1,
                             margin: 0,
+                            textTransform: 'uppercase'
                           }}
                         >
                           {data[10]}

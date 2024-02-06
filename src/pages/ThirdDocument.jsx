@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     marginTop: 6,
     transform: "scaleY(2)",
     paddingBottom: 2,
+    textTransform: 'uppercase'
   },
   StretchBoldText: {
     fontWeight: 700,
@@ -226,7 +227,7 @@ const ThirdDocument = ({ csvData }) => {
                         padding: 2,
                       }}
                     >
-                      <View style={{ fontSize: "8px" }}>
+                      <View style={{ fontSize: "8px", textTransform: 'uppercase' }}>
                         <Text>{data[0]}</Text>
                         <Text>{data[7]}</Text>
                         <Text>{data[2]}</Text>
@@ -274,6 +275,7 @@ const ThirdDocument = ({ csvData }) => {
                             display: "block",
                             marginBottom: -1,
                             margin: 0,
+                            textTransform: 'uppercase'
                           }}
                         >
                           {data[8]}
@@ -283,6 +285,7 @@ const ThirdDocument = ({ csvData }) => {
                             display: "block",
                             marginBottom: -1,
                             margin: 0,
+                            textTransform: 'uppercase'
                           }}
                         >
                           {data[15]}
@@ -292,6 +295,7 @@ const ThirdDocument = ({ csvData }) => {
                             display: "block",
                             marginBottom: -1,
                             margin: 0,
+                            textTransform: 'uppercase'
                           }}
                         >
                           {data[10]}
