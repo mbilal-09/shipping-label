@@ -151,29 +151,29 @@ const SecondDocument = ({ csvData }) => {
             }`
           );
 
-          if (
-            !data[0] ||
-            !data[2] ||
-            !data[4] ||
-            !data[5] ||
-            !data[6] ||
-            !data[7] ||
-            !data[8] ||
-            !data[16] ||
-            !data[17] ||
-            !data[18] ||
-            !data[19] ||
-            !data[15] ||
-            !data[10] ||
-            !data[12] ||
-            !data[13] ||
-            !data[14] ||
-            !data[20] ||
-            !data[21] ||
-            !data[22]
-          ) {
-            return null;
-          }
+          // if (
+          //   !data[0] ||
+          //   !data[2] ||
+          //   !data[4] ||
+          //   !data[5] ||
+          //   !data[6] ||
+          //   !data[7] ||
+          //   !data[8] ||
+          //   !data[16] ||
+          //   !data[17] ||
+          //   !data[18] ||
+          //   !data[19] ||
+          //   !data[15] ||
+          //   !data[10] ||
+          //   !data[12] ||
+          //   !data[13] ||
+          //   !data[14] ||
+          //   !data[20] ||
+          //   !data[21] ||
+          //   !data[22]
+          // ) {
+          //   return null;
+          // }
 
           const zipCode1 = data[14];
           const zipCode = zipCode1.replace("-", "");
@@ -203,6 +203,8 @@ const SecondDocument = ({ csvData }) => {
                       backgroundColor: "#fff",
                       border: "3",
                       borderColor: "#000",
+                      height: '100%',
+                      position: 'relative'
                     }}
                   >
                     <View
@@ -254,6 +256,7 @@ const SecondDocument = ({ csvData }) => {
                           marginLeft: 12,
                           fontSize: "9px",
                           marginTop: -2,
+                          textTransform: 'uppercase'
                         }}
                       >
                         <Text
@@ -429,15 +432,15 @@ const SecondDocument = ({ csvData }) => {
                         flexDirection: "flex-end",
                         justifyContent: "flex-end",
                         alignItems: "flex-end",
-                        marginTop: 17.6,
-                        padding: 0.1,
+                        position: 'absolute',
+                        bottom: 1,
+                        right: 4
                       }}
                     >
                       <Text
                         style={{
                           fontSize: "7px",
                           textAlign: "right",
-                          marginRight: 8,
                         }}
                       >{`ISH 13.00F LASER 15.5V ${getCurrentMonth()}`}</Text>
                     </View>

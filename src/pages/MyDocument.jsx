@@ -139,46 +139,46 @@ const MyDocument = ({ csvData }) => {
             } 840 002 ${data[23]?.slice(0, 2)}${data[23]?.slice(
               data[23].length - 8,
               data[23].length
-            )} UPSN ${data[23]?.slice(2, 8)} 015 1/1 ${data[16]} N ${data[10]} ${
-              data[13]
-            }`
+            )} UPSN ${data[23]?.slice(2, 8)} 015 1/1 ${data[16]} N ${
+              data[10]
+            } ${data[13]}`
           );
 
-          for (let i = 0; i <= 23; i++) {
-            if (!data[i]) {
-                data[i] = 'a';
-            }
-        }
+          //   for (let i = 0; i <= 23; i++) {
+          //     if (!data[i]) {
+          //         data[i] = 'a';
+          //     }
+          // }
 
-          if (
-            !data[0] ||
-            !data[2] ||
-            !data[4] ||
-            !data[5] ||
-            !data[6] ||
-            !data[7] ||
-            !data[8] ||
-            !data[16] ||
-            !data[17] ||
-            !data[18] ||
-            !data[19] ||
-            !data[15] ||
-            !data[10] ||
-            !data[12] ||
-            !data[13] ||
-            !data[14] ||
-            !data[20] ||
-            !data[21] ||
-            !data[22]
-          ) {
-            return null;
-          }
+          // if (
+          //   !data[0] ||
+          //   !data[2] ||
+          //   !data[4] ||
+          //   !data[5] ||
+          //   !data[6] ||
+          //   !data[7] ||
+          //   !data[8] ||
+          //   !data[16] ||
+          //   !data[17] ||
+          //   !data[18] ||
+          //   !data[19] ||
+          //   !data[15] ||
+          //   !data[10] ||
+          //   !data[12] ||
+          //   !data[13] ||
+          //   !data[14] ||
+          //   !data[20] ||
+          //   !data[21] ||
+          //   !data[22]
+          // ) {
+          //   return null;
+          // }
 
-          for (let i = 0; i <= 23; i++) {
-            if (data[i] === 'a') {
-                data[i] = '';
-            }
-        }
+          //   for (let i = 0; i <= 23; i++) {
+          //     if (data[i] === 'a') {
+          //         data[i] = '';
+          //     }
+          // }
 
           const zipCode1 = data[14];
           const zipCode = zipCode1.replace("-", "");
@@ -208,6 +208,8 @@ const MyDocument = ({ csvData }) => {
                       backgroundColor: "#fff",
                       border: "3",
                       borderColor: "#000",
+                      height: '100%',
+                      position: 'relative'
                     }}
                   >
                     <View
@@ -258,6 +260,7 @@ const MyDocument = ({ csvData }) => {
                           marginLeft: 12,
                           fontSize: "9px",
                           marginTop: -2,
+                          textTransform: 'uppercase'
                         }}
                       >
                         <Text
@@ -424,15 +427,15 @@ const MyDocument = ({ csvData }) => {
                         flexDirection: "flex-end",
                         justifyContent: "flex-end",
                         alignItems: "flex-end",
-                        marginTop: 13.1,
-                        padding: 0.1,
+                        position: 'absolute',
+                        bottom: 1,
+                        right: 4
                       }}
                     >
                       <Text
                         style={{
                           fontSize: "7px",
                           textAlign: "right",
-                          marginRight: 6,
                         }}
                       >{`ISH 13.00F LASER 15.5V ${getCurrentMonth()}`}</Text>
                     </View>

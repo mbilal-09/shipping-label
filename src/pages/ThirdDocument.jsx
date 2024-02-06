@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   PDFDownloadLink,
   Page,
@@ -127,6 +127,24 @@ const ThirdDocument = ({ csvData }) => {
       return null;
     }
   };
+  const [dailyNumber, setDailyNumber] = useState(1);
+
+  useEffect(() => {
+    const today = new Date().toLocaleDateString();
+    const lastUpdated = localStorage.getItem("lastUpdated");
+    if (!lastUpdated || lastUpdated !== today) {
+      const num = localStorage.getItem("dailyNumber");
+      const updatedNumber = num ? parseInt(num) + 1 : "038";
+      setDailyNumber(updatedNumber);
+      localStorage.setItem("dailyNumber", updatedNumber);
+      localStorage.setItem("lastUpdated", today);
+    } else {
+      const num = localStorage.getItem("dailyNumber");
+      setDailyNumber(parseInt(num));
+    }
+  }, []);
+
+  console.log(dailyNumber);
 
   return (
     <Document>
@@ -139,34 +157,34 @@ const ThirdDocument = ({ csvData }) => {
             } 840 001 ${data[23]?.slice(0, 2)}${data[23]?.slice(
               data[23].length - 8,
               data[23].length
-            )} UPSN ${data[23]?.slice(2, 8)} 015 1/1 ${data[16]} N ${data[10]} ${
-              data[13]
-            }`
+            )} UPSN ${data[23]?.slice(2, 8)} ${dailyNumber < 100 ? '0' + dailyNumber : dailyNumber} 1/1 ${data[16]} N ${
+              data[10]
+            } ${data[13]}`
           );
 
-          if (
-            !data[0] ||
-            !data[2] ||
-            !data[4] ||
-            !data[5] ||
-            !data[6] ||
-            !data[7] ||
-            !data[8] ||
-            !data[16] ||
-            !data[17] ||
-            !data[18] ||
-            !data[19] ||
-            !data[15] ||
-            !data[10] ||
-            !data[12] ||
-            !data[13] ||
-            !data[14] ||
-            !data[20] ||
-            !data[21] ||
-            !data[22]
-          ) {
-            return null;
-          }
+          // if (
+          //   !data[0] ||
+          //   !data[2] ||
+          //   !data[4] ||
+          //   !data[5] ||
+          //   !data[6] ||
+          //   !data[7] ||
+          //   !data[8] ||
+          //   !data[16] ||
+          //   !data[17] ||
+          //   !data[18] ||
+          //   !data[19] ||
+          //   !data[15] ||
+          //   !data[10] ||
+          //   !data[12] ||
+          //   !data[13] ||
+          //   !data[14] ||
+          //   !data[20] ||
+          //   !data[21] ||
+          //   !data[22]
+          // ) {
+          //   return null;
+          // }
 
           const zipCode1 = data[14];
           const zipCode = zipCode1.replace("-", "");
@@ -196,6 +214,8 @@ const ThirdDocument = ({ csvData }) => {
                       backgroundColor: "#fff",
                       border: "3",
                       borderColor: "#000",
+                      height: "100%",
+                      position: "relative",
                     }}
                   >
                     <View
@@ -246,6 +266,7 @@ const ThirdDocument = ({ csvData }) => {
                           marginLeft: 12,
                           fontSize: "9px",
                           marginTop: -2,
+                          textTransform: "uppercase",
                         }}
                       >
                         <Text
@@ -410,15 +431,15 @@ const ThirdDocument = ({ csvData }) => {
                         flexDirection: "flex-end",
                         justifyContent: "flex-end",
                         alignItems: "flex-end",
-                        marginTop: 13.1,
-                        padding: 0.1,
+                        position: "absolute",
+                        bottom: 1,
+                        right: 4,
                       }}
                     >
                       <Text
                         style={{
                           fontSize: "7px",
                           textAlign: "right",
-                          marginRight: 6,
                         }}
                       >{`ISH 13.00F LASER 15.5V ${getCurrentMonth()}`}</Text>
                     </View>
