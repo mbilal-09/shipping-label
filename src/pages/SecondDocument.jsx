@@ -135,6 +135,23 @@ const SecondDocument = ({ csvData }) => {
     }
   };
 
+  const [dailyNumber, setDailyNumber] = useState(1);
+
+  useEffect(() => {
+    const today = new Date().toLocaleDateString();
+    const lastUpdated = localStorage.getItem("lastUpdated");
+    if (!lastUpdated || lastUpdated !== today) {
+      const num = localStorage.getItem("dailyNumber");
+      const updatedNumber = num ? parseInt(num) + 1 : "038";
+      setDailyNumber(updatedNumber);
+      localStorage.setItem("dailyNumber", updatedNumber);
+      localStorage.setItem("lastUpdated", today);
+    } else {
+      const num = localStorage.getItem("dailyNumber");
+      setDailyNumber(parseInt(num));
+    }
+  }, []);
+
   return (
     <Document>
       {csvData &&
@@ -146,7 +163,7 @@ const SecondDocument = ({ csvData }) => {
             } 840 003 ${data[23]?.slice(0, 2)}${data[23]?.slice(
               data[23].length - 8,
               data[23].length
-            )} UPSN ${data[23]?.slice(2, 8)} 015 1/1 ${data[16]} N ${data[10]} ${
+            )} UPSN ${data[23]?.slice(2, 8)} ${dailyNumber < 100 ? '0' + dailyNumber : dailyNumber} 1/1 ${data[16]} N ${data[10]} ${
               data[13]
             }`
           );

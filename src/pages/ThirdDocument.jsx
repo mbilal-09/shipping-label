@@ -127,6 +127,7 @@ const ThirdDocument = ({ csvData }) => {
       return null;
     }
   };
+  
   const [dailyNumber, setDailyNumber] = useState(1);
 
   useEffect(() => {
@@ -144,7 +145,6 @@ const ThirdDocument = ({ csvData }) => {
     }
   }, []);
 
-  console.log(dailyNumber);
 
   return (
     <Document>
