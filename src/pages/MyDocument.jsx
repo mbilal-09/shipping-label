@@ -144,6 +144,12 @@ const MyDocument = ({ csvData }) => {
             }`
           );
 
+          for (let i = 0; i <= 23; i++) {
+            if (!data[i]) {
+                data[i] = 'a';
+            }
+        }
+
           if (
             !data[0] ||
             !data[2] ||
@@ -167,6 +173,12 @@ const MyDocument = ({ csvData }) => {
           ) {
             return null;
           }
+
+          for (let i = 0; i <= 23; i++) {
+            if (data[i] === 'a') {
+                data[i] = '';
+            }
+        }
 
           const zipCode1 = data[14];
           const zipCode = zipCode1.replace("-", "");
