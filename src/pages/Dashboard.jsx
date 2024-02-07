@@ -68,7 +68,7 @@ function Dashboard() {
             onFileLoaded={(data, fileInfo) => {
               data.shift();
               setCsvData(data);
-              let name = fileInfo.name.replace(".csv", "");
+              let name = fileInfo.name?.replace(".csv", "");
               setCvsFileName(name);
             }}
           />

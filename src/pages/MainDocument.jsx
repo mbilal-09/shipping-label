@@ -1,17 +1,17 @@
 import React from "react";
 import { PDFViewer, PDFDownloadLink } from "@react-pdf/renderer";
-import MyDocument from "./MyDocument";
-import SecondDocument from "./SecondDocument";
-import ThirdDocument from "./ThirdDocument";
+import Ups_Second_Day from "./Ups_Second_Day";
+import Ups_Next_Day_Air from "./Ups_Next_Day_Air";
+import Ups_Ground from "./Ups_Ground";
 
 const getSelectedDocument = (selectedOption, csvData) => {
   switch (selectedOption) {
     case "UPS 2ND DAY AIR":
-      return <MyDocument csvData={csvData} />;
+      return <Ups_Second_Day csvData={csvData} />;
     case "UPS NEXT DAY AIR":
-      return <ThirdDocument csvData={csvData} />;
+      return <Ups_Ground csvData={csvData} />;
     default:
-      return <SecondDocument csvData={csvData} />;
+      return <Ups_Next_Day_Air csvData={csvData} />;
   }
 };
 

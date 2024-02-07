@@ -8,6 +8,9 @@ import {
   StyleSheet,
   Image,
   Font,
+  Svg,
+  Polygon,
+  Rect,
 } from "@react-pdf/renderer";
 import bwipjs from "bwip-js";
 
@@ -31,7 +34,7 @@ const styles = StyleSheet.create({
     marginTop: 6,
     transform: "scaleY(2)",
     paddingBottom: 2,
-    textTransform: 'uppercase'
+    textTransform: "uppercase",
   },
   StretchBoldText: {
     fontWeight: 700,
@@ -59,7 +62,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ThirdDocument = ({ csvData }) => {
+const Ups_Second_Day = ({ csvData }) => {
   const getCurrentDate = () => {
     const currentDate = new Date();
     const day = currentDate.getDate().toString().padStart(2, "0");
@@ -128,7 +131,7 @@ const ThirdDocument = ({ csvData }) => {
       return null;
     }
   };
-  
+
   const [dailyNumber, setDailyNumber] = useState(1);
 
   useEffect(() => {
@@ -146,22 +149,27 @@ const ThirdDocument = ({ csvData }) => {
     }
   }, []);
 
-
   return (
     <Document>
       {csvData &&
-        csvData.length > 0 &&
-        csvData.map((data, index) => {
+        csvData?.length > 0 &&
+        csvData?.map((data, index) => {
           const maxiCodeImage = generateMaxiCodeImage(
             `[)> 01 96${
               data && data[14]?.replace("-", "").padEnd(9, "0")
-            } 840 001 ${data[23]?.slice(0, 2)}${data[23]?.slice(
-              data[23].length - 8,
-              data[23].length
-            )} UPSN ${data[23]?.slice(2, 8)} ${dailyNumber < 100 ? '0' + dailyNumber : dailyNumber} 1/1 ${data[16]} N ${
-              data[10]
-            } ${data[13]}`
+            } 840 002 ${data[23]?.slice(0, 2)}${data[23]?.slice(
+              data[23]?.length - 8,
+              data[23]?.length
+            )} UPSN ${data[23]?.slice(2, 8)} ${
+              dailyNumber < 100 ? "0" + dailyNumber : dailyNumber
+            } 1/1 ${data[16]} N ${data[10]} ${data[13]}`
           );
+
+          //   for (let i = 0; i <= 23; i++) {
+          //     if (!data[i]) {
+          //         data[i] = 'a';
+          //     }
+          // }
 
           // if (
           //   !data[0] ||
@@ -187,16 +195,22 @@ const ThirdDocument = ({ csvData }) => {
           //   return null;
           // }
 
+          for (let i = 0; i < data?.length; i++) {
+            if (!data[i]) {
+              data[i] = "";
+            }
+          }
+
           const zipCode1 = data[14];
-          const zipCode = zipCode1.replace("-", "");
+          const zipCode = zipCode1?.replace("-", "");
           const barcodeValue = `420${
             zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)
           }`;
           const barcodeOne = generateBarCodeImage(barcodeValue);
-          const barcodeTwo = generateBarCodeTwoImage(data[23] && data[23]);
+          const barcodeTwo = generateBarCodeTwoImage(data[23]);
           const randomTwoDigitNumber = Math.floor(Math.random() * 90) + 10;
 
-          let inputValue = data[23] && data[23];
+          let inputValue = data[23];
           let formattedValue = [
             inputValue?.slice(0, 2),
             inputValue?.slice(2, 5),
@@ -204,7 +218,7 @@ const ThirdDocument = ({ csvData }) => {
             inputValue?.slice(8, 10),
             inputValue?.slice(10, 14),
             inputValue?.slice(14),
-          ]?.join(" ");
+          ].join(" ");
 
           return (
             <Page size="A6" key={index} id={`content-id-${index}`}>
@@ -227,7 +241,9 @@ const ThirdDocument = ({ csvData }) => {
                         padding: 2,
                       }}
                     >
-                      <View style={{ fontSize: "8px", textTransform: 'uppercase' }}>
+                      <View
+                        style={{ fontSize: "8px", textTransform: "uppercase" }}
+                      >
                         <Text>{data[0]}</Text>
                         <Text>{data[7]}</Text>
                         <Text>{data[2]}</Text>
@@ -254,9 +270,9 @@ const ThirdDocument = ({ csvData }) => {
                           <Text style={styles.normal}>{`${data[16]} LBS`}</Text>
                           <Text style={styles.normal}>1 OF 1</Text>
                         </View>
-                        <Text
-                          style={{ fontSize: "8px", marginLeft: 72 }}
-                        >{`DWT: ${data[17]},${data[18]},${data[19]}`}</Text>
+                        <Text style={{ fontSize: "8px", marginLeft: 72 }}>
+                          DWT: {`${data[17]},${data[18]},${data[19]}`}
+                        </Text>
                       </View>
                       <View></View>
                     </View>
@@ -270,22 +286,52 @@ const ThirdDocument = ({ csvData }) => {
                           textTransform: "uppercase",
                         }}
                       >
-                        <Text
+                        <View
                           style={{
-                            display: "block",
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
                             marginBottom: -1,
-                            margin: 0,
-                            textTransform: 'uppercase'
                           }}
                         >
-                          {data[8]}
-                        </Text>
+                          <Text
+                            style={{
+                              display: "block",
+                              margin: 0,
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            {data[8]}
+                          </Text>
+                          <Text
+                            style={{
+                              display: "block",
+                              margin: 0,
+                              textTransform: "uppercase",
+                              marginLeft: 8,
+                            }}
+                          >
+                            {data[9]}
+                          </Text>
+                        </View>
+                        {data[11] && (
+                          <Text
+                            style={{
+                              display: "block",
+                              margin: 0,
+                              marginVertical: 1,
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            {data[11]}
+                          </Text>
+                        )}
                         <Text
                           style={{
                             display: "block",
                             marginBottom: -1,
                             margin: 0,
-                            textTransform: 'uppercase'
+                            textTransform: "uppercase",
                           }}
                         >
                           {data[15]}
@@ -295,7 +341,7 @@ const ThirdDocument = ({ csvData }) => {
                             display: "block",
                             marginBottom: -1,
                             margin: 0,
-                            textTransform: 'uppercase'
+                            textTransform: "uppercase",
                           }}
                         >
                           {data[10]}
@@ -373,16 +419,16 @@ const ThirdDocument = ({ csvData }) => {
                     >
                       <View style={{ marginLeft: 3 }}>
                         <Text style={styles.StretchBoldText}>
-                          UPS NEXT DAY AIR
+                          UPS 2ND DAY AIR
                         </Text>
                         <Text
                           style={{ fontSize: "10px", paddingHorizontal: 2 }}
                         >
-                          TRACKING #: {formattedValue && formattedValue}
+                          TRACKING #: {formattedValue}
                         </Text>
                       </View>
                       <View>
-                        <Text style={styles.second}>1</Text>
+                        <Text style={styles.second}>2</Text>
                       </View>
                     </View>
                     <View
@@ -420,14 +466,18 @@ const ThirdDocument = ({ csvData }) => {
                           fontWeight: "medium",
                           fontSize: "8px",
                         }}
-                      >{`REF #1: ${data[21]}`}</Text>
+                      >
+                        REF #1: {data[21]}
+                      </Text>
                       <Text
                         style={{
                           marginTop: 1,
                           fontWeight: "medium",
                           fontSize: "8px",
                         }}
-                      >{`REF #2: ${data[22]}`}</Text>
+                      >
+                        {data[22] && `REF #2: ${data[22]}`}
+                      </Text>
                     </View>
                     <View
                       style={{
@@ -457,4 +507,4 @@ const ThirdDocument = ({ csvData }) => {
   );
 };
 
-export default ThirdDocument;
+export default Ups_Second_Day;

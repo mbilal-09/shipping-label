@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   PDFDownloadLink,
   Page,
@@ -8,6 +8,9 @@ import {
   StyleSheet,
   Image,
   Font,
+  Svg,
+  Polygon,
+  Rect,
 } from "@react-pdf/renderer";
 import bwipjs from "bwip-js";
 
@@ -24,20 +27,20 @@ const styles = StyleSheet.create({
   semiBoldText: { fontFamily: "Poppins", fontWeight: 600 },
   boldText: { fontWeight: 700, fontFamily: "Poppins" },
   underShipTo: {
-    fontWeight: 700,
+    fontWeight: 800,
     fontFamily: "Poppins",
-    marginVertical: 1,
-    fontSize: "8px",
-    marginTop: 1.5,
+    marginBottom: 2,
+    fontSize: "9.6px",
+    marginTop: 6,
     transform: "scaleY(2)",
-    textTransform: 'uppercase'
+    paddingBottom: 2,
+    textTransform: "uppercase",
   },
   StretchBoldText: {
     fontWeight: 700,
     fontFamily: "Poppins",
     transform: "scaleY(2)",
     fontSize: 16,
-    paddingTop: 4,
   },
   extraboldText: { fontWeight: 900, fontFamily: "Poppins" },
   barUpperText: {
@@ -52,22 +55,14 @@ const styles = StyleSheet.create({
   normal: { fontFamily: "Poppins", fontWeight: 600, fontSize: 12 },
   normalTwo: { fontFamily: "Poppins", fontWeight: 600, fontSize: 10 },
   second: {
-    fontWeight: 700,
-    fontSize: 42,
+    fontWeight: 600,
+    fontSize: 36,
     fontFamily: "Poppins",
     paddingRight: 4,
-    marginTop: -8,
-  },
-  hager: {
-    fontWeight: 700,
-    fontFamily: "Poppins",
-    transform: "scaleY(2)",
-    fontSize: 12,
-    textTransform: 'uppercase'
   },
 });
 
-const SecondDocument = ({ csvData }) => {
+const Ups_Ground = ({ csvData }) => {
   const getCurrentDate = () => {
     const currentDate = new Date();
     const day = currentDate.getDate().toString().padStart(2, "0");
@@ -157,17 +152,17 @@ const SecondDocument = ({ csvData }) => {
   return (
     <Document>
       {csvData &&
-        csvData.length > 0 &&
-        csvData.map((data, index) => {
+        csvData?.length > 0 &&
+        csvData?.map((data, index) => {
           const maxiCodeImage = generateMaxiCodeImage(
             `[)> 01 96${
               data && data[14]?.replace("-", "").padEnd(9, "0")
-            } 840 003 ${data[23]?.slice(0, 2)}${data[23]?.slice(
-              data[23].length - 8,
-              data[23].length
-            )} UPSN ${data[23]?.slice(2, 8)} ${dailyNumber < 100 ? '0' + dailyNumber : dailyNumber} 1/1 ${data[16]} N ${data[10]} ${
-              data[13]
-            }`
+            } 840 001 ${data[23]?.slice(0, 2)}${data[23]?.slice(
+              data[23]?.length - 8,
+              data[23]?.length
+            )} UPSN ${data[23]?.slice(2, 8)} ${
+              dailyNumber < 100 ? "0" + dailyNumber : dailyNumber
+            } 1/1 ${data[16]} N ${data[10]} ${data[13]}`
           );
 
           // if (
@@ -194,16 +189,22 @@ const SecondDocument = ({ csvData }) => {
           //   return null;
           // }
 
+          for (let i = 0; i < data?.length; i++) {
+            if (!data[i]) {
+              data[i] = "";
+            }
+          }
+
           const zipCode1 = data[14];
-          const zipCode = zipCode1.replace("-", "");
+          const zipCode = zipCode1?.replace("-", "");
           const barcodeValue = `420${
             zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)
           }`;
           const barcodeOne = generateBarCodeImage(barcodeValue);
-          const barcodeTwo = generateBarCodeTwoImage(data[23]);
+          const barcodeTwo = generateBarCodeTwoImage(data[23] && data[23]);
           const randomTwoDigitNumber = Math.floor(Math.random() * 90) + 10;
 
-          let inputValue = data[23];
+          let inputValue = data[23] && data[23];
           let formattedValue = [
             inputValue?.slice(0, 2),
             inputValue?.slice(2, 5),
@@ -211,7 +212,7 @@ const SecondDocument = ({ csvData }) => {
             inputValue?.slice(8, 10),
             inputValue?.slice(10, 14),
             inputValue?.slice(14),
-          ].join(" ");
+          ]?.join(" ");
 
           return (
             <Page size="A6" key={index} id={`content-id-${index}`}>
@@ -222,8 +223,8 @@ const SecondDocument = ({ csvData }) => {
                       backgroundColor: "#fff",
                       border: "3",
                       borderColor: "#000",
-                      height: '100%',
-                      position: 'relative'
+                      height: "100%",
+                      position: "relative",
                     }}
                   >
                     <View
@@ -234,7 +235,9 @@ const SecondDocument = ({ csvData }) => {
                         padding: 2,
                       }}
                     >
-                      <View style={{ fontSize: "8px", textTransform: 'uppercase' }}>
+                      <View
+                        style={{ fontSize: "8px", textTransform: "uppercase" }}
+                      >
                         <Text>{data[0]}</Text>
                         <Text>{data[7]}</Text>
                         <Text>{data[2]}</Text>
@@ -267,33 +270,62 @@ const SecondDocument = ({ csvData }) => {
                       </View>
                       <View></View>
                     </View>
-
-                    <View style={{ padding: 0, marginTop: 10, paddingLeft: 2 }}>
+                    <View style={{ padding: 0, marginTop: 12, paddingLeft: 2 }}>
                       <Text style={styles.normalTwo}>SHIP TO:</Text>
                       <View
                         style={{
                           marginLeft: 12,
                           fontSize: "9px",
                           marginTop: -2,
-                          textTransform: 'uppercase'
+                          textTransform: "uppercase",
                         }}
                       >
-                        <Text
+                        <View
                           style={{
-                            display: "block",
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
                             marginBottom: -1,
-                            margin: 0,
-                            textTransform: 'uppercase'
                           }}
                         >
-                          {data[8]}
-                        </Text>
+                          <Text
+                            style={{
+                              display: "block",
+                              margin: 0,
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            {data[8]}
+                          </Text>
+                          <Text
+                            style={{
+                              display: "block",
+                              margin: 0,
+                              textTransform: "uppercase",
+                              marginLeft: 8,
+                            }}
+                          >
+                            {data[9]}
+                          </Text>
+                        </View>
+                        {data[11] && (
+                          <Text
+                            style={{
+                              display: "block",
+                              margin: 0,
+                              marginVertical: 1,
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            {data[11]}
+                          </Text>
+                        )}
                         <Text
                           style={{
                             display: "block",
                             marginBottom: -1,
                             margin: 0,
-                            textTransform: 'uppercase'
+                            textTransform: "uppercase",
                           }}
                         >
                           {data[15]}
@@ -303,17 +335,14 @@ const SecondDocument = ({ csvData }) => {
                             display: "block",
                             marginBottom: -1,
                             margin: 0,
-                            textTransform: 'uppercase'
+                            textTransform: "uppercase",
                           }}
                         >
                           {data[10]}
                         </Text>
                         <Text
                           style={styles.underShipTo}
-                        >{`${data[13]} ${data[14]}`}</Text>
-                        <Text
-                          style={styles.hager}
-                        >{`HAGERSTOWN ${data[13]} ${data[14]}`}</Text>
+                        >{`${data[12]} ${data[13]} ${data[14]}`}</Text>
                       </View>
                     </View>
                     <View
@@ -378,31 +407,23 @@ const SecondDocument = ({ csvData }) => {
                         flexDirection: "row",
                         alignItems: "center",
                         justifyContent: "space-between",
-                        marginVertical: -0.4,
+                        marginVertical: -4,
+                        marginBottom: -7,
                       }}
                     >
                       <View style={{ marginLeft: 3 }}>
-                        <Text style={styles.StretchBoldText}>UPS GROUND</Text>
+                        <Text style={styles.StretchBoldText}>
+                          UPS NEXT DAY AIR
+                        </Text>
                         <Text
-                          style={{
-                            fontSize: "10px",
-                            paddingHorizontal: 2,
-                            paddingTop: 2,
-                            paddingBottom: 1,
-                          }}
-                        >{`TRACKING #: ${formattedValue}`}</Text>
+                          style={{ fontSize: "10px", paddingHorizontal: 2 }}
+                        >
+                          TRACKING #: {formattedValue && formattedValue}
+                        </Text>
                       </View>
-                      <View
-                        style={{
-                          marginVertical: -0.4,
-                          backgroundColor: "black",
-                          width: 44,
-                          height: 44,
-                          display: "flex",
-                          justifyContent: "flex-end",
-                          alignContent: "flex-end",
-                        }}
-                      ></View>
+                      <View>
+                        <Text style={styles.second}>1</Text>
+                      </View>
                     </View>
                     <View
                       style={{
@@ -415,7 +436,7 @@ const SecondDocument = ({ csvData }) => {
                       style={{
                         flexDirection: "row",
                         justifyContent: "center",
-                        height: 80,
+                        height: 90,
                         width: 220,
                         marginHorizontal: "auto",
                         paddingVertical: 6,
@@ -454,9 +475,9 @@ const SecondDocument = ({ csvData }) => {
                         flexDirection: "flex-end",
                         justifyContent: "flex-end",
                         alignItems: "flex-end",
-                        position: 'absolute',
+                        position: "absolute",
                         bottom: 1,
-                        right: 4
+                        right: 4,
                       }}
                     >
                       <Text
@@ -476,4 +497,4 @@ const SecondDocument = ({ csvData }) => {
   );
 };
 
-export default SecondDocument;
+export default Ups_Ground;
