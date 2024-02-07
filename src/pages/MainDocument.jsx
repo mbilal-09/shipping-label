@@ -1,17 +1,23 @@
 import React from "react";
 import { PDFViewer, PDFDownloadLink } from "@react-pdf/renderer";
 import Ups_Second_Day from "./Ups_Second_Day";
+import Ups_Second_Day_2 from "./Ups_Second_Day_2";
 import Ups_Next_Day_Air from "./Ups_Next_Day_Air";
+import Ups_Next_Day_Air_2 from "./Ups_Next_Day_Air_2";
 import Ups_Ground from "./Ups_Ground";
 
 const getSelectedDocument = (selectedOption, csvData) => {
   switch (selectedOption) {
     case "UPS 2ND DAY AIR":
       return <Ups_Second_Day csvData={csvData} />;
+    case "UPS 2ND DAY AIR 2":
+      return <Ups_Second_Day_2 csvData={csvData} />;
+    case "UPS NEXT DAY AIR 2":
+      return <Ups_Next_Day_Air_2 csvData={csvData} />;
     case "UPS NEXT DAY AIR":
-      return <Ups_Ground csvData={csvData} />;
-    default:
       return <Ups_Next_Day_Air csvData={csvData} />;
+    case "UPS Ground":
+      return <Ups_Ground csvData={csvData} />;
   }
 };
 

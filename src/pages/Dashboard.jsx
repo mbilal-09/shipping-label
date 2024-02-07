@@ -40,7 +40,7 @@ function Dashboard() {
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center justify-start rtl:justify-end">
               <a href="/" className="flex ms-2 md:me-24">
-                <p className="self-center text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 text-xl font-bold sm:text-2xl whitespace-nowrap">
+                <p className="self-center text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 text-lg font-bold sm:text-2xl whitespace-nowrap">
                   Shipping Label Creation
                 </p>
               </a>
@@ -93,7 +93,9 @@ function Dashboard() {
                     Choose an option
                   </option>
                   <option value="UPS 2ND DAY AIR">UPS 2ND DAY AIR</option>
+                  <option value="UPS 2ND DAY AIR 2">UPS 2ND DAY AIR 2</option>
                   <option value="UPS NEXT DAY AIR">UPS NEXT DAY AIR</option>
+                  <option value="UPS NEXT DAY AIR 2">UPS NEXT DAY AIR 2</option>
                   <option value="UPS Ground">UPS Ground</option>
                 </select>
               </div>

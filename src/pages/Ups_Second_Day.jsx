@@ -419,7 +419,7 @@ const Ups_Second_Day = ({ csvData }) => {
                     >
                       <View style={{ marginLeft: 3 }}>
                         <Text style={styles.StretchBoldText}>
-                          UPS 2ND DAY AIR
+                          UPS 2ND DAY AIR 
                         </Text>
                         <Text
                           style={{ fontSize: "10px", paddingHorizontal: 2 }}
