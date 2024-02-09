@@ -396,6 +396,7 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                             alignItems: "center",
                             justifyContent: "center",
                             margin: "auto",
+                            paddingHorizontal: 6,
                           }}
                         >
                           {maxiCodeImage && <Image src={maxiCodeImage} />}
