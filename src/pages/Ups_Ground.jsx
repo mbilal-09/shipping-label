@@ -380,7 +380,7 @@ const Ups_Ground = ({ csvData }) => {
                             margin: "auto",
                           }}
                         >
-                          {maxiCodeImage && <Image src={maxiCodeImage} />}
+                          {maxiCodeImage && <Image src={maxiCodeImage} style={{ width: 80, height: 72 }} />}
                         </View>
                       </View>
                       <View

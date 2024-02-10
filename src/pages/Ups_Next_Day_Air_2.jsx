@@ -399,7 +399,7 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                             paddingHorizontal: 6,
                           }}
                         >
-                          {maxiCodeImage && <Image src={maxiCodeImage} />}
+                          {maxiCodeImage && <Image src={maxiCodeImage} style={{ width: 80, height: 72 }} />}
                         </View>
                       </View>
                       <View
@@ -475,7 +475,7 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                         height: 90,
                         width: 220,
                         marginHorizontal: "auto",
-                        paddingVertical: 2,
+                        paddingVertical: 3,
                       }}
                     >
                       {barcodeTwo && <Image src={barcodeTwo} />}
@@ -517,13 +517,13 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                           display: "flex",
                           flexDirection: "row",
                           alignItems: "flex-end",
-                          marginRight: 10,
+                          marginRight: 18,
                           position: "relative",
                         }}
                       >
                         <Image
                           src={
-                            "https://static.vecteezy.com/system/resources/previews/020/201/771/original/gift-box-icon-in-black-outline-on-a-white-background-free-vector.jpg"
+                            "https://hassankhanw3.pythonanywhere.com/image/pdfgift/"
                           }
                           style={{
                             width: 50,
@@ -532,12 +532,12 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                         />
                         <Text
                           style={{
-                            fontSize: 8,
+                            fontSize: 7,
                             fontWeight: 700,
                             // marginLeft: -6,
                             position: "absolute",
-                            right: 11,
-                            bottom: 10,
+                            right: -1,
+                            bottom: 7,
                           }}
                         >
                           TM

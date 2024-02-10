@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     fontWeight: 600,
     fontSize: 36,
     fontFamily: "Poppins",
-    paddingRight: 4,
+    paddingRight: 10,
   },
 });
 
@@ -374,7 +374,12 @@ const Ups_Second_Day = ({ csvData }) => {
                             margin: "auto",
                           }}
                         >
-                          {maxiCodeImage && <Image src={maxiCodeImage} />}
+                          {maxiCodeImage && (
+                            <Image
+                              src={maxiCodeImage}
+                              style={{ width: 80, height: 72 }}
+                            />
+                          )}
                         </View>
                       </View>
                       <View
@@ -415,11 +420,13 @@ const Ups_Second_Day = ({ csvData }) => {
                         justifyContent: "space-between",
                         marginVertical: -4,
                         marginBottom: -7,
+                        paddingHorizontal: 3,
+                        paddingVertical: 0,
                       }}
                     >
-                      <View style={{ marginLeft: 3 }}>
+                      <View style={{}}>
                         <Text style={styles.StretchBoldText}>
-                          UPS 2ND DAY AIR 
+                          UPS 2ND DAY AIR
                         </Text>
                         <Text
                           style={{ fontSize: "10px", paddingHorizontal: 2 }}
