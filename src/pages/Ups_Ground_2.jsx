@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     marginTop: -2,
     transform: "scaleY(1.3)",
     letterSpacing: 0.1,
+    textTransform: "uppercase",
   },
   normal: { fontFamily: "Poppins", fontWeight: 600, fontSize: 12 },
   normalTwo: { fontFamily: "Poppins", fontWeight: 600, fontSize: 10 },
@@ -338,7 +339,7 @@ const Ups_Ground_2 = ({ csvData }) => {
                               display: "block",
                               margin: 0,
                               textTransform: "uppercase",
-                              marginLeft: 8,
+                              marginLeft: 4,
                             }}
                           >
                             {data[9]}

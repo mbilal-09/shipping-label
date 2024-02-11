@@ -49,7 +49,7 @@ function Dashboard() {
               <div className="flex items-center">
                 <button
                   onClick={handleLogout}
-                  className="bg-red-50 text-red-600 rounded-lg py-2 px-6 hover:bg-red-600 hover:text-white transition-all border border-red-600"
+                  className="bg-red-50 text-red-600 rounded-lg sm:py-2 sm:px-6 py-1 px-4 sm:text-[16px] text-sm hover:bg-red-600 hover:text-white transition-all border border-red-600"
                 >
                   Sign Out
                 </button>

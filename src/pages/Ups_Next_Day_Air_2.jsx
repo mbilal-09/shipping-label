@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     marginTop: -2,
     transform: "scaleY(1.3)",
     letterSpacing: 0.1,
+    textTransform: "uppercase",
   },
   normal: { fontFamily: "Poppins", fontWeight: 600, fontSize: 12 },
   normalTwo: { fontFamily: "Poppins", fontWeight: 600, fontSize: 10 },
@@ -331,25 +332,13 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                               display: "block",
                               margin: 0,
                               textTransform: "uppercase",
-                              marginLeft: 8,
+                              marginLeft: 4,
                             }}
                           >
                             {data[9]}
                           </Text>
                         </View>
-                        {data[11] && (
-                          <Text
-                            style={{
-                              display: "block",
-                              margin: 0,
-                              marginVertical: 1,
-                              textTransform: "uppercase",
-                              marginBottom: -1.5,
-                            }}
-                          >
-                            {data[11]}
-                          </Text>
-                        )}
+
                         <Text
                           style={{
                             display: "block",
@@ -370,6 +359,19 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                         >
                           {data[10]}
                         </Text>
+                        {data[11] && (
+                          <Text
+                            style={{
+                              display: "block",
+                              margin: 0,
+                              marginVertical: 1,
+                              textTransform: "uppercase",
+                              marginBottom: -1.5,
+                            }}
+                          >
+                            {data[11]}
+                          </Text>
+                        )}
                         <Text
                           style={styles.underShipTo}
                         >{`${data[12]} ${data[13]} ${data[14]}`}</Text>
@@ -399,7 +401,12 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                             paddingHorizontal: 6,
                           }}
                         >
-                          {maxiCodeImage && <Image src={maxiCodeImage} style={{ width: 80, height: 72 }} />}
+                          {maxiCodeImage && (
+                            <Image
+                              src={maxiCodeImage}
+                              style={{ width: 80, height: 72 }}
+                            />
+                          )}
                         </View>
                       </View>
                       <View

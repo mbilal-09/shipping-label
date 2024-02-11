@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
     marginTop: 2,
     transform: "scaleY(2)",
+    textTransform: "uppercase",
   },
   normal: { fontFamily: "Poppins", fontWeight: 600, fontSize: 12 },
   normalTwo: { fontFamily: "Poppins", fontWeight: 600, fontSize: 10 },
@@ -162,7 +163,18 @@ const Ups_Second_Day = ({ csvData }) => {
               data[23]?.length
             )} UPSN ${data[23]?.slice(2, 8)} ${
               dailyNumber < 100 ? "0" + dailyNumber : dailyNumber
-            } 1/1 ${data[16]} N ${data[10]} ${data[13]}`
+            } 1/1 ${data[16]} N ${data[12]} ${data[13]}`
+          );
+
+          console.log(
+            `[)> 01 96${
+              data && data[14]?.replace("-", "").padEnd(9, "0")
+            } 840 002 ${data[23]?.slice(0, 2)}${data[23]?.slice(
+              data[23]?.length - 8,
+              data[23]?.length
+            )} UPSN ${data[23]?.slice(2, 8)} ${
+              dailyNumber < 100 ? "0" + dailyNumber : dailyNumber
+            } 1/1 ${data[16]} N ${data[12]} ${data[13]}`
           );
 
           //   for (let i = 0; i <= 23; i++) {
@@ -308,24 +320,12 @@ const Ups_Second_Day = ({ csvData }) => {
                               display: "block",
                               margin: 0,
                               textTransform: "uppercase",
-                              marginLeft: 8,
+                              marginLeft: 4,
                             }}
                           >
                             {data[9]}
                           </Text>
                         </View>
-                        {data[11] && (
-                          <Text
-                            style={{
-                              display: "block",
-                              margin: 0,
-                              marginVertical: 1,
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            {data[11]}
-                          </Text>
-                        )}
                         <Text
                           style={{
                             display: "block",
@@ -346,6 +346,18 @@ const Ups_Second_Day = ({ csvData }) => {
                         >
                           {data[10]}
                         </Text>
+                        {data[11] && (
+                          <Text
+                            style={{
+                              display: "block",
+                              margin: 0,
+                              marginVertical: 1,
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            {data[11]}
+                          </Text>
+                        )}
                         <Text
                           style={styles.underShipTo}
                         >{`${data[12]} ${data[13]} ${data[14]}`}</Text>
