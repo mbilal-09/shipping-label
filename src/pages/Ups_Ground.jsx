@@ -318,7 +318,6 @@ const Ups_Ground = ({ csvData }) => {
                             {data[9]}
                           </Text>
                         </View>
-                       
                         <Text
                           style={{
                             display: "block",
@@ -351,9 +350,9 @@ const Ups_Ground = ({ csvData }) => {
                             {data[11]}
                           </Text>
                         )}
-                        <Text
+                        {/* <Text
                           style={styles.underShipTo}
-                        >{`${data[13]} ${data[14]}`}</Text>
+                        >{`${data[13]} ${data[14]}`}</Text> */}
                         <Text
                           style={styles.hager}
                         >{`HAGERSTOWN ${data[13]} ${data[14]}`}</Text>

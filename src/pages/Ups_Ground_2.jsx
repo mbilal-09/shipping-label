@@ -375,9 +375,9 @@ const Ups_Ground_2 = ({ csvData }) => {
                             {data[11]}
                           </Text>
                         )}
-                        <Text
+                        {/* <Text
                           style={styles.underShipTo}
-                        >{`${data[13]} ${data[14]}`}</Text>
+                        >{`${data[13]} ${data[14]}`}</Text> */}
                         <Text
                           style={styles.hager}
                         >{`HAGERSTOWN ${data[13]} ${data[14]}`}</Text>
