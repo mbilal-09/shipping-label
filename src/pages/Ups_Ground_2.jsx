@@ -75,17 +75,24 @@ const styles = StyleSheet.create({
     transform: "scaleY(1.2)",
     fontSize: 10,
     textTransform: "uppercase",
-    marginTop: -4,
+    marginTop: -2,
   },
 });
 
 const Ups_Ground_2 = ({ csvData }) => {
-  const getCurrentDate = () => {
+  const getCurrentDateFormatted = () => {
     const currentDate = new Date();
-    const day = currentDate.getDate().toString().padStart(2, "0");
+    const year = currentDate.getFullYear().toString().slice(2);
     const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
-    const year = currentDate.getFullYear();
-    return `${day},${month},${year}`;
+    const day = currentDate.getDate().toString().padStart(2, "0");
+    return `${year}.${month}.${day}`;
+  };
+
+  const getCurrentMonthYearFormatted = () => {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear().toString().slice(2);
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+    return `${month}/${year}`;
   };
 
   const getCurrentMonth = () => {
@@ -348,7 +355,8 @@ const Ups_Ground_2 = ({ csvData }) => {
                         <Text
                           style={{
                             display: "block",
-                            marginBottom: -1,
+                            // marginBottom: -1,
+                            marginVertical: -1,
                             textTransform: "uppercase",
                           }}
                         >
@@ -357,7 +365,7 @@ const Ups_Ground_2 = ({ csvData }) => {
                         <Text
                           style={{
                             display: "block",
-                            marginTop: -2,
+                            // marginTop: -2,
                             textTransform: "uppercase",
                           }}
                         >
@@ -570,12 +578,13 @@ const Ups_Ground_2 = ({ csvData }) => {
                     <View
                       style={{
                         display: "flex",
-                        flexDirection: "flex-end",
-                        justifyContent: "flex-end",
-                        alignItems: "flex-end",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
                         position: "absolute",
                         bottom: 0,
-                        right: "4%",
+                        gap: 14,
+                        // right: "4%",
                         // left: "50%",
                         width: "100%",
                       }}
@@ -584,9 +593,14 @@ const Ups_Ground_2 = ({ csvData }) => {
                         style={{
                           fontSize: "5px",
                           textAlign: "center",
-                          width: "100%",
                         }}
-                      >{`ISH 13.00F LASER 15.5V ${getCurrentMonth()}`}</Text>
+                      >{`XOL ${getCurrentDateFormatted()}`}</Text>
+                      <Text
+                        style={{
+                          fontSize: "5px",
+                          textAlign: "center",
+                        }}
+                      >{`NV45 45.0A ${getCurrentMonthYearFormatted()}`}</Text>
                     </View>
                   </View>
                 </View>

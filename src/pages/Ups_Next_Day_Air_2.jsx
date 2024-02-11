@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     fontWeight: 800,
     fontFamily: "Poppins",
     fontSize: "8.5px",
-    marginTop: 1,
+    marginTop: 0,
     transform: "scaleY(1.5)",
     paddingBottom: 2,
     textTransform: "uppercase",
@@ -68,21 +68,20 @@ const styles = StyleSheet.create({
 });
 
 const Ups_Next_Day_Air_2 = ({ csvData }) => {
-  const getCurrentDate = () => {
+  const getCurrentDateFormatted = () => {
     const currentDate = new Date();
-    const day = currentDate.getDate().toString().padStart(2, "0");
+    const year = currentDate.getFullYear().toString().slice(2);
     const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
-    const year = currentDate.getFullYear();
-    return `${day},${month},${year}`;
+    const day = currentDate.getDate().toString().padStart(2, "0");
+    return `${year}.${month}.${day}`;
   };
 
-  const getCurrentMonth = () => {
+  const getCurrentMonthYearFormatted = () => {
     const currentDate = new Date();
+    const year = currentDate.getFullYear().toString().slice(2);
     const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
-    const year = currentDate.getFullYear();
     return `${month}/${year}`;
   };
-
   const generateMaxiCodeImage = (barcodeValueTwo) => {
     const canvas = document.createElement("canvas");
     try {
@@ -315,7 +314,7 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                             display: "flex",
                             flexDirection: "row",
                             alignItems: "center",
-                            marginBottom: -2,
+                            marginTop: -1,
                           }}
                         >
                           <Text
@@ -342,8 +341,7 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                         <Text
                           style={{
                             display: "block",
-                            marginBottom: -1,
-                            margin: 0,
+                            marginVertical: -1,
                             textTransform: "uppercase",
                           }}
                         >
@@ -352,8 +350,6 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                         <Text
                           style={{
                             display: "block",
-                            marginBottom: -1,
-                            margin: 0,
                             textTransform: "uppercase",
                           }}
                         >
@@ -363,10 +359,9 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                           <Text
                             style={{
                               display: "block",
-                              margin: 0,
-                              marginVertical: 1,
+                              marginVertical: 0,
                               textTransform: "uppercase",
-                              marginBottom: -1.5,
+                              marginBottom: 0,
                             }}
                           >
                             {data[11]}
@@ -554,12 +549,13 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                     <View
                       style={{
                         display: "flex",
-                        flexDirection: "flex-end",
-                        justifyContent: "flex-end",
-                        alignItems: "flex-end",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
                         position: "absolute",
                         bottom: 0,
-                        right: "4%",
+                        gap: 14,
+                        // right: "4%",
                         // left: "50%",
                         width: "100%",
                       }}
@@ -568,9 +564,14 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                         style={{
                           fontSize: "5px",
                           textAlign: "center",
-                          width: "100%",
                         }}
-                      >{`ISH 13.00F LASER 15.5V ${getCurrentMonth()}`}</Text>
+                      >{`XOL ${getCurrentDateFormatted()}`}</Text>
+                      <Text
+                        style={{
+                          fontSize: "5px",
+                          textAlign: "center",
+                        }}
+                      >{`NV45 45.0A ${getCurrentMonthYearFormatted()}`}</Text>
                     </View>
                   </View>
                 </View>
