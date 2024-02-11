@@ -21,6 +21,8 @@ const getSelectedDocument = (selectedOption, csvData) => {
       return <Ups_Ground csvData={csvData} />;
     case "UPS Ground 2":
       return <Ups_Ground_2 csvData={csvData} />;
+    default:
+      return <Ups_Second_Day csvData={csvData} />;
   }
 };
 

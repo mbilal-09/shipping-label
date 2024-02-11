@@ -176,7 +176,7 @@ const Ups_Ground_2 = ({ csvData }) => {
   return (
     <Document>
       {csvData &&
-        csvData?.length > 0 &&
+        csvData?.length >= 0 &&
         csvData?.map((data, index) => {
           const maxiCodeImage = generateMaxiCodeImage(
             `[)> 01 96${
