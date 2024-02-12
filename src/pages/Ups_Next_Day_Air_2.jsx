@@ -525,7 +525,7 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                       >
                         <Image
                           src={
-                            "https://hassankhanw3.pythonanywhere.com/image/pdfgift/"
+                            "https://res.cloudinary.com/hassankhanw3/image/upload/v1707749426/gift_kqvxti.png"
                           }
                           style={{
                             width: 50,

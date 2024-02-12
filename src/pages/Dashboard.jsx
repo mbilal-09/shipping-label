@@ -67,7 +67,6 @@ function Dashboard() {
             cssclassName="mx-auto m-0 p-0"
             onFileLoaded={(data, fileInfo) => {
               data.shift();
-              console.log(data);
               setCsvData(data);
               let name = fileInfo.name?.replace(".csv", "");
               setCvsFileName(name);
