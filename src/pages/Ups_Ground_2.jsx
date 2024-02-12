@@ -554,25 +554,13 @@ const Ups_Ground_2 = ({ csvData }) => {
                       >
                         <Image
                           src={
-                            "https://res.cloudinary.com/hassankhanw3/image/upload/v1707749426/gift_kqvxti.png"
+                            "https://res.cloudinary.com/hassankhanw3/image/upload/v1707755589/gift_aea1yn.png"
                           }
                           style={{
-                            width: 50,
-                            height: 20,
+                            width: 40,
+                            height: 15,
                           }}
                         />
-                        <Text
-                          style={{
-                            fontSize: 7,
-                            fontWeight: 700,
-                            // marginLeft: -6,
-                            position: "absolute",
-                            right: -1,
-                            bottom: 7,
-                          }}
-                        >
-                          TM
-                        </Text>
                       </View>
                     </View>
                     <View
