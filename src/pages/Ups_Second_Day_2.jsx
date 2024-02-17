@@ -160,13 +160,11 @@ const Ups_Second_Day_2 = ({ csvData }) => {
         csvData?.length > 0 &&
         csvData?.map((data, index) => {
           const maxiCodeImage = generateMaxiCodeImage(
-            `[)> 01 96${
-              data && data[14]?.replace("-", "").padEnd(9, "0")
+            `[)> 01 96${data && data[14]?.replace("-", "").padEnd(9, "0")
             } 840 002 ${data[23]?.slice(0, 2)}${data[23]?.slice(
               data[23]?.length - 8,
               data[23]?.length
-            )} UPSN ${data[23]?.slice(2, 8)} ${
-              dailyNumber < 100 ? "0" + dailyNumber : dailyNumber
+            )} UPSN ${data[23]?.slice(2, 8)} ${dailyNumber < 100 ? "0" + dailyNumber : dailyNumber
             } 1/1 ${data[16]} N ${data[10]} ${data[13]}`
           );
 
@@ -208,9 +206,8 @@ const Ups_Second_Day_2 = ({ csvData }) => {
 
           const zipCode1 = data[14];
           const zipCode = zipCode1?.replace("-", "");
-          const barcodeValue = `420${
-            zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)
-          }`;
+          const barcodeValue = `420${zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)
+            }`;
           const barcodeOne = generateBarCodeImage(barcodeValue);
           const barcodeTwo = generateBarCodeTwoImage(data[23]);
           const randomTwoDigitNumber = Math.floor(Math.random() * 90) + 10;
@@ -224,6 +221,16 @@ const Ups_Second_Day_2 = ({ csvData }) => {
             inputValue?.slice(10, 14),
             inputValue?.slice(14),
           ].join(" ");
+
+          let zipArea = data[14];
+          const match = zipArea?.match(/^(\d{4})-(\d{4})$/);
+          if (match) {
+            const firstPart = match[1];
+            if (firstPart?.length === 4) {
+              zipArea = `0${firstPart}-${match[2]}`;
+            }
+          }
+
 
           return (
             <Page size="A6" key={index} id={`content-id-${index}`}>
@@ -372,7 +379,7 @@ const Ups_Second_Day_2 = ({ csvData }) => {
                         )}
                         <Text
                           style={styles.underShipTo}
-                        >{`${data[12]} ${data[13]} ${data[14]}`}</Text>
+                        >{`${data[12]} ${data[13]} ${zipArea}`}</Text>
                       </View>
                     </View>
                     <View
@@ -418,9 +425,8 @@ const Ups_Second_Day_2 = ({ csvData }) => {
                           position: "relative",
                         }}
                       >
-                        <Text style={styles.barUpperText}>{`${data[13]} ${
-                          data[14]?.slice(0, 3) || ""
-                        } 9-${randomTwoDigitNumber}`}</Text>
+                        <Text style={styles.barUpperText}>{`${data[13]} ${data[14]?.slice(0, 3) || ""
+                          } 9-${randomTwoDigitNumber}`}</Text>
                         {barcodeOne && (
                           <Image
                             src={barcodeOne}
@@ -491,8 +497,8 @@ const Ups_Second_Day_2 = ({ csvData }) => {
                         backgroundColor: "#000",
                       }}
                     ></View>
-                    <View style={{ paddingTop: 0, paddingLeft: 4 }}>
-                      <Text style={{ fontSize: "8px" }}>BILLING: P/P</Text>
+                    <View style={{ paddingTop: 0, paddingLeft: 4, textTransform: 'uppercase' }}>
+                      <Text style={{ fontSize: "8px" }}>BILLING: 3RD PARTY</Text>
                       <Text style={{ fontSize: "8px" }}>DESC: {data[20]}</Text>
                     </View>
                     <View
