@@ -526,7 +526,7 @@ const Ups_Next_Day_Air_2 = ({ csvData }) => {
                           fontSize: "8px",
                         }}
                       >
-                        Refrence No.1: {data[21]}
+                        {data[21] && `Refrence No.1: ${data[21]}`}
                       </Text>
                       <View
                         style={{

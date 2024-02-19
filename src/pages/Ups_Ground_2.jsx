@@ -548,7 +548,7 @@ const Ups_Ground_2 = ({ csvData }) => {
                           fontWeight: "medium",
                           fontSize: "8px",
                         }}
-                      >{`Refrence No.1: ${data[21]}`}</Text>
+                      >{data[21] && `Refrence No.1: ${data[21]}`}</Text>
                       <Text
                         style={{
                           fontWeight: "medium",
