@@ -17,6 +17,8 @@ function Component() {
       <Dropdown.Item>UPS Ground</Dropdown.Item>
       <Dropdown.Divider />
       <Dropdown.Item>UPS Ground 2</Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item>UPS Ground 3</Dropdown.Item>
     </Dropdown>
   );
 }

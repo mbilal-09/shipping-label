@@ -98,6 +98,7 @@ function Dashboard() {
                   <option value="UPS NEXT DAY AIR 2">UPS NEXT DAY AIR 2</option>
                   <option value="UPS Ground">UPS Ground</option>
                   <option value="UPS Ground 2">UPS Ground 2</option>
+                  <option value="UPS Ground 3">UPS Ground 3</option>
                 </select>
               </div>
             </>
