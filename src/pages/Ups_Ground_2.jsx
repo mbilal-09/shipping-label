@@ -179,11 +179,13 @@ const Ups_Ground_2 = ({ csvData }) => {
         csvData?.length >= 0 &&
         csvData?.map((data, index) => {
           const maxiCodeImage = generateMaxiCodeImage(
-            `[)> 01 96${data && data[14]?.replace("-", "").padEnd(9, "0")
+            `[)> 01 96${
+              data && data[14]?.replace("-", "").padEnd(9, "0")
             } 840 003 ${data[23]?.slice(0, 2)}${data[23]?.slice(
               data[23]?.length - 8,
               data[23]?.length
-            )} UPSN ${data[23]?.slice(2, 8)} ${dailyNumber < 100 ? "0" + dailyNumber : dailyNumber
+            )} UPSN ${data[23]?.slice(2, 8)} ${
+              dailyNumber < 100 ? "0" + dailyNumber : dailyNumber
             } 1/1 ${data[16]} N ${data[10]} ${data[13]}`
           );
 
@@ -219,8 +221,9 @@ const Ups_Ground_2 = ({ csvData }) => {
 
           const zipCode1 = data[14];
           const zipCode = zipCode1?.replace("-", "");
-          const barcodeValue = `420${zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)
-            }`;
+          const barcodeValue = `420${
+            zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)
+          }`;
           const barcodeOne = generateBarCodeImage(barcodeValue);
           const barcodeTwo = generateBarCodeTwoImage(data[23]);
           const randomTwoDigitNumber = Math.floor(Math.random() * 90) + 10;
@@ -234,7 +237,6 @@ const Ups_Ground_2 = ({ csvData }) => {
             inputValue?.slice(10, 14),
             inputValue?.slice(14),
           ].join(" ");
-
 
           let zipArea = data[14];
           const match = zipArea?.match(/^(\d{4})-(\d{4})$/);
@@ -442,8 +444,9 @@ const Ups_Ground_2 = ({ csvData }) => {
                           position: "relative",
                         }}
                       >
-                        <Text style={styles.barUpperText}>{`${data[13]} ${data[14]?.slice(0, 3) || ""
-                          } 9-${randomTwoDigitNumber}`}</Text>
+                        <Text style={styles.barUpperText}>{`${data[13]} ${
+                          data[14]?.slice(0, 3) || ""
+                        } 9-${randomTwoDigitNumber}`}</Text>
                         {barcodeOne && (
                           <Image
                             src={barcodeOne}
@@ -543,20 +546,26 @@ const Ups_Ground_2 = ({ csvData }) => {
                         bottom: 7,
                       }}
                     >
-                      <Text
-                        style={{
-                          fontWeight: "medium",
-                          fontSize: "8px",
-                        }}
-                      >{data[21] && `Refrence No.1: ${data[21]}`}</Text>
-                      <Text
-                        style={{
-                          fontWeight: "medium",
-                          fontSize: "8px",
-                        }}
+                      <View
+                        style={{ display: "flex", flexDirection: "column" }}
                       >
-                        {data[22] && `Refrence No.2: ${data[22]}`}
-                      </Text>
+                        <Text
+                          style={{
+                            fontWeight: "medium",
+                            fontSize: "8px",
+                          }}
+                        >
+                          {data[21] && `Refrence No.1: ${data[21]}`}
+                        </Text>
+                        <Text
+                          style={{
+                            fontWeight: "medium",
+                            fontSize: "8px",
+                          }}
+                        >
+                          {data[22] && `Refrence No.2: ${data[22]}`}
+                        </Text>
+                      </View>
                       <View
                         style={{
                           display: "flex",
