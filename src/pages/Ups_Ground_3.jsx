@@ -517,7 +517,7 @@ const Ups_Ground_3 = ({ csvData }) => {
                       style={{
                         flexDirection: "row",
                         justifyContent: "center",
-                        height: 85,
+                        height: 90,
                         width: 250,
                         marginHorizontal: "auto",
                         paddingVertical: 8,
