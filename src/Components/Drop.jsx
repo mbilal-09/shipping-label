@@ -1,7 +1,6 @@
+"use client";
 
-'use client';
-
-import { Dropdown } from 'flowbite-react';
+import { Dropdown } from "flowbite-react";
 
 function Component() {
   return (
@@ -19,6 +18,8 @@ function Component() {
       <Dropdown.Item>UPS Ground 2</Dropdown.Item>
       <Dropdown.Divider />
       <Dropdown.Item>UPS Ground 3</Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item>UPS Ground Advantage</Dropdown.Item>
     </Dropdown>
   );
 }

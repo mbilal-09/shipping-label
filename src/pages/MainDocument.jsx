@@ -7,6 +7,7 @@ import Ups_Next_Day_Air_2 from "./Ups_Next_Day_Air_2";
 import Ups_Ground from "./Ups_Ground";
 import Ups_Ground_2 from "./Ups_Ground_2";
 import Ups_Ground_3 from "./Ups_Ground_3";
+import USPS_Ground_Advantage from "./USPS_GROUND_ADVANTAGE";
 
 const getSelectedDocument = (selectedOption, csvData) => {
   switch (selectedOption) {
@@ -24,6 +25,8 @@ const getSelectedDocument = (selectedOption, csvData) => {
       return <Ups_Ground_2 csvData={csvData} />;
     case "UPS Ground 3":
       return <Ups_Ground_3 csvData={csvData} />;
+    case "USPS Ground Advantage":
+      return <USPS_Ground_Advantage csvData={csvData} />;
     default:
       return <Ups_Second_Day csvData={csvData} />;
   }

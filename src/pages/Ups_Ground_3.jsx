@@ -520,16 +520,19 @@ const Ups_Ground_3 = ({ csvData }) => {
                         height: 90,
                         width: 250,
                         marginHorizontal: "auto",
-                        paddingVertical: 8,
+                        paddingVertical: 6,
                       }}
                     >
-                      {barcodeTwo && <Image src={barcodeTwo} />}
+                      {barcodeTwo && (
+                        <Image src={barcodeTwo} style={{ marginTop: 10 }} />
+                      )}
                     </View>
                     <View
                       style={{
                         width: "100%",
                         height: 3,
                         backgroundColor: "#000",
+                        marginTop: 10,
                       }}
                     ></View>
                     <View

@@ -165,7 +165,7 @@ const Ups_Second_Day_2 = ({ csvData }) => {
               data[23]?.length - 8,
               data[23]?.length
             )} UPSN ${data[23]?.slice(2, 8)} ${dailyNumber < 100 ? "0" + dailyNumber : dailyNumber
-            } 1/1 ${data[16]} N ${data[10]} ${data[13]}`
+            } 1/1 ${data[16]} N ${data[12]} ${data[13]}`
           );
 
           //   for (let i = 0; i <= 23; i++) {
