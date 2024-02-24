@@ -223,12 +223,12 @@ const USPS_Ground_Advantage = ({ csvData }) => {
 
           let inputValue = data[23];
           let formattedValue = [
-            inputValue?.slice(0, 2),
-            inputValue?.slice(2, 5),
-            inputValue?.slice(5, 8),
-            inputValue?.slice(8, 10),
-            inputValue?.slice(10, 14),
-            inputValue?.slice(14),
+            inputValue.slice(0, 4), // Take the first four digits
+            inputValue.slice(4, 8), // Take the next four digits
+            inputValue.slice(8, 12), // Take the next four digits
+            inputValue.slice(12, 16), // Take the next four digits
+            inputValue.slice(16, 20), // Take the next four digits
+            inputValue.slice(20), // Take the remaining digits
           ].join(" ");
 
           let zipArea = data[14];
@@ -460,17 +460,19 @@ const USPS_Ground_Advantage = ({ csvData }) => {
                           backgroundColor: "#000",
                         }}
                       ></View>
-                      <Text
-                        style={{
-                          fontSize: "8px",
-                          marginTop: 6,
-                          marginBottom: 4,
-                          paddingLeft: 1,
-                          //   textAlign: "center",
-                        }}
-                      >
-                        DESC: {data[20]}
-                      </Text>
+                      {data[20] && (
+                        <Text
+                          style={{
+                            fontSize: "8px",
+                            marginTop: 6,
+                            marginBottom: 4,
+                            paddingLeft: 1,
+                            //   textAlign: "center",
+                          }}
+                        >
+                          DESC: {data[20]}
+                        </Text>
+                      )}
                     </View>
                   </View>
                 </View>
