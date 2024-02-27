@@ -196,8 +196,7 @@ const Ups_Next_Day_Air = ({ csvData }) => {
 
           const zipCode1 = data[14];
           const zipCode = zipCode1?.replace("-", "");
-          const barcodeValue = `420${zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)
-            }`;
+          const barcodeValue = `420${zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)}`;
           const barcodeOne = generateBarCodeImage(barcodeValue);
           const barcodeTwo = generateBarCodeTwoImage(data[23] && data[23]);
           const randomTwoDigitNumber = Math.floor(Math.random() * 90) + 10;

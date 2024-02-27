@@ -208,15 +208,13 @@ const USPS_Ground_Advantage = ({ csvData }) => {
           }
           const zipCode1 = data[14];
           const zipCode = zipCode1?.replace("-", "");
-          const barcodeValue = `420${
-            zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)
-          }`;
+          const barcodeValue = `420${zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)}`;
           const barcodeOne = generateBarCodeImage(barcodeValue);
 
           const data14Parts = data[14].split("-"); // Splitting data[14] by dash
           const firstPart = data14Parts[0]; // Taking the first part before the dash
           const data23 = data[23]; // Taking data[23] as it is
-          const outputString = `420 ${firstPart} ${data23}`;
+          const outputString = `420${firstPart}${data23}`;
           const barcodeTwo = generateBarCodeTwoImage(outputString);
 
           const randomTwoDigitNumber = Math.floor(Math.random() * 90) + 10;

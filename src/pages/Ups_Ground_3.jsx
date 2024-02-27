@@ -226,9 +226,7 @@ const Ups_Ground_3 = ({ csvData }) => {
 
           const zipCode1 = data[14];
           const zipCode = zipCode1?.replace("-", "");
-          const barcodeValue = `420${
-            zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)
-          }`;
+          const barcodeValue = `420${zipCode?.length === 5 ? zipCode : zipCode?.slice(0, 9)}`;
           const barcodeOne = generateBarCodeImage(barcodeValue);
           const barcodeTwo = generateBarCodeTwoImage(data[23]);
           const randomTwoDigitNumber = Math.floor(Math.random() * 90) + 10;
@@ -329,7 +327,7 @@ const Ups_Ground_3 = ({ csvData }) => {
                       style={{
                         padding: 0,
                         marginTop: 8,
-                        marginBottom: 16,
+                        marginBottom: 30,
                         paddingLeft: 6,
                       }}
                     >
@@ -517,10 +515,10 @@ const Ups_Ground_3 = ({ csvData }) => {
                       style={{
                         flexDirection: "row",
                         justifyContent: "center",
-                        height: 90,
+                        height: 80,
                         width: 250,
                         marginHorizontal: "auto",
-                        paddingVertical: 6,
+                        paddingVertical: 2,
                       }}
                     >
                       {barcodeTwo && (
