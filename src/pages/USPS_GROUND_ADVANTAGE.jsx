@@ -266,7 +266,7 @@ const USPS_Ground_Advantage = ({ csvData }) => {
                           borderWidth: 1.2,
                           borderColor: "black",
                           borderBottomWidth: 0,
-                          borderLeftWidth: 1.5,
+                          borderLeftWidth: 0,
                           display: "flex",
                           flexDirection: "row",
                           alignItems: "center",
@@ -283,7 +283,7 @@ const USPS_Ground_Advantage = ({ csvData }) => {
                         style={{
                           borderWidth: 1.2,
                           borderColor: "black",
-                          borderRightWidth: 1.5,
+                          borderRightWidth: 0,
                           padding: 1,
                           display: "flex",
                           flexDirection: "column",
@@ -296,11 +296,11 @@ const USPS_Ground_Advantage = ({ csvData }) => {
                           //   height: "20%",
                         }}
                       >
-                        <Text style={{ fontSize: 7 }}>USPS GROUND</Text>
-                        <Text style={{ fontSize: 7 }}>ADVANTAGE</Text>
-                        <Text style={{ fontSize: 7 }}>U.S. POSTAGE PAID</Text>
-                        <Text style={{ fontSize: 7 }}>ATFM</Text>
-                        <Text style={{ fontSize: 7 }}>e-Postage</Text>
+                        <Text style={{ fontSize: 8.3 }}>USPS GROUND</Text>
+                        <Text style={{ fontSize: 8.3 }}>ADVANTAGE</Text>
+                        <Text style={{ fontSize: 8.3 }}>U.S. POSTAGE PAID</Text>
+                        <Text style={{ fontSize: 8.3 }}>ATFM</Text>
+                        <Text style={{ fontSize: 8.3 }}>e-Postage</Text>
                       </View>
                     </View>
                     <View
@@ -402,7 +402,9 @@ const USPS_Ground_Advantage = ({ csvData }) => {
                       <View style={{ fontSize: "8.5px", color: "black" }}>
                         <Text>{data[8]}</Text>
                         <Text>{data[9]}</Text>
+                        {/* <Text>{data[15]}</Text> */}
                         <Text>{data[10]}</Text>
+                        {data[11] && <Text>{data[11]}</Text>}
                         <Text
                           style={styles.hager}
                         >{`${data[12]} ${data[13]} ${zipArea}`}</Text>
