@@ -266,7 +266,7 @@ const USPS_Ground_Advantage = ({ csvData }) => {
                           borderWidth: 1.2,
                           borderColor: "black",
                           borderBottomWidth: 0,
-                          borderLeftWidth: 0,
+                          // borderLeftWidth: 0,
                           display: "flex",
                           flexDirection: "row",
                           alignItems: "center",
@@ -283,7 +283,7 @@ const USPS_Ground_Advantage = ({ csvData }) => {
                         style={{
                           borderWidth: 1.2,
                           borderColor: "black",
-                          borderRightWidth: 0,
+                          // borderRightWidth: 0,
                           padding: 1,
                           display: "flex",
                           flexDirection: "column",
@@ -293,6 +293,7 @@ const USPS_Ground_Advantage = ({ csvData }) => {
                           textAlign: "center",
                           paddingBottom: 6,
                           paddingTop: 2,
+                          marginRight: 16,
                           //   height: "20%",
                         }}
                       >
