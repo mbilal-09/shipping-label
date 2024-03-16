@@ -95,9 +95,9 @@ const styles = StyleSheet.create({
 const USPS_Ground_Advantage = ({ csvData }) => {
   const getCurrentDateFormatted = () => {
     const currentDate = new Date();
-    const year = currentDate.getFullYear().toString().slice(2);
-    const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
-    const day = currentDate.getDate().toString().padStart(2, "0");
+    const year = currentDate?.getFullYear()?.toString()?.slice(2);
+    const month = (currentDate?.getMonth() + 1)?.toString()?.padStart(2, "0");
+    const day = currentDate?.getDate()?.toString()?.padStart(2, "0");
     return `${year}.${month}.${day}`;
   };
 
@@ -213,22 +213,22 @@ const USPS_Ground_Advantage = ({ csvData }) => {
           }`;
           const barcodeOne = generateBarCodeImage(barcodeValue);
 
-          const data14Parts = data[14].split("-"); // Splitting data[14] by dash
+          const data14Parts = data[14]?.split("-"); // Splitting data[14] by dash
           const firstPart = data14Parts[0]; // Taking the first part before the dash
           const data23 = data[23]; // Taking data[23] as it is
           const outputString = `420${firstPart}${data23}`;
           const barcodeTwo = generateBarCodeTwoImage(outputString);
 
-          const randomTwoDigitNumber = Math.floor(Math.random() * 90) + 10;
+          const randomTwoDigitNumber = Math?.floor(Math.random() * 90) + 10;
 
           let inputValue = data[23];
           let formattedValue = [
-            inputValue.slice(0, 4), // Take the first four digits
-            inputValue.slice(4, 8), // Take the next four digits
-            inputValue.slice(8, 12), // Take the next four digits
-            inputValue.slice(12, 16), // Take the next four digits
-            inputValue.slice(16, 20), // Take the next four digits
-            inputValue.slice(20), // Take the remaining digits
+            inputValue?.slice(0, 4), // Take the first four digits
+            inputValue?.slice(4, 8), // Take the next four digits
+            inputValue?.slice(8, 12), // Take the next four digits
+            inputValue?.slice(12, 16), // Take the next four digits
+            inputValue?.slice(16, 20), // Take the next four digits
+            inputValue?.slice(20), // Take the remaining digits
           ].join(" ");
 
           let zipArea = data[14];
